@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Trading Card Creator</title>
+    <link rel="stylesheet" href="trading-card.css">
+</head>
+<body>
+    <div class="app-container">
+        <header class="app-header no-print">
+            <h1>Trading Card Creator</h1>
+            <p class="subtitle">Create custom trading cards and print them</p>
+        </header>
+
+        <main class="main-content">
+            <!-- Card Editor Form -->
+            <section class="editor-section no-print">
+                <h2>Card Editor</h2>
+                <form id="cardForm" class="card-form">
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="cardName">Card Name</label>
+                            <input type="text" id="cardName" value="Dragon Knight" maxlength="20" required>
+                        </div>
+                        <div class="form-group small">
+                            <label for="cardCost">Cost</label>
+                            <input type="number" id="cardCost" value="7" min="0" max="99" required>
+                        </div>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="cardType">Card Type</label>
+                            <input type="text" id="cardType" value="Creature - Dragon Warrior" maxlength="30">
+                        </div>
+                        <div class="form-group small">
+                            <label for="cardRarity">Rarity</label>
+                            <select id="cardRarity">
+                                <option value="legendary">Legendary</option>
+                                <option value="rare">Rare</option>
+                                <option value="uncommon">Uncommon</option>
+                                <option value="common">Common</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="cardImage">Card Image (Emoji or URL)</label>
+                        <input type="text" id="cardImage" value="🐉" placeholder="Enter emoji or image URL">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="cardAbility">Abilities</label>
+                        <input type="text" id="cardAbility" value="Flying, Trample" maxlength="40">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="cardFlavor">Flavor Text</label>
+                        <textarea id="cardFlavor" rows="2" maxlength="120">From the ashes of the ancient realm, the Dragon Knight rises to defend the innocent.</textarea>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group small">
+                            <label for="cardAttack">Attack</label>
+                            <input type="number" id="cardAttack" value="8" min="0" max="99" required>
+                        </div>
+                        <div class="form-group small">
+                            <label for="cardDefense">Defense</label>
+                            <input type="number" id="cardDefense" value="6" min="0" max="99" required>
+                        </div>
+                        <div class="form-group small">
+                            <label for="cardId">Card #</label>
+                            <input type="text" id="cardId" value="001" maxlength="5">
+                        </div>
+                    </div>
+
+                    <div class="form-actions">
+                        <button type="button" id="addCardBtn" class="btn btn-primary">Add Card to Print Queue</button>
+                        <button type="button" id="clearFormBtn" class="btn btn-secondary">Clear Form</button>
+                    </div>
+                </form>
+            </section>
+
+            <!-- Live Preview -->
+            <section class="preview-section no-print">
+                <h2>Live Preview</h2>
+                <div class="preview-container">
+                    <div class="trading-card legendary" id="previewCard">
+                        <div class="card-border">
+                            <div class="card-header">
+                                <span class="card-name" id="previewName">Dragon Knight</span>
+                                <span class="card-cost" id="previewCost">7</span>
+                            </div>
+                            
+                            <div class="card-image">
+                                <div class="image-placeholder" id="previewImage">
+                                    <span class="placeholder-icon">🐉</span>
+                                </div>
+                            </div>
+                            
+                            <div class="card-type">
+                                <span class="type-badge" id="previewType">Creature - Dragon Warrior</span>
+                            </div>
+                            
+                            <div class="card-description">
+                                <p><strong id="previewAbility">Flying, Trample</strong></p>
+                                <p class="flavor-text" id="previewFlavor">"From the ashes of the ancient realm, the Dragon Knight rises to defend the innocent."</p>
+                            </div>
+                            
+                            <div class="card-stats">
+                                <div class="stat attack">
+                                    <span class="stat-label">ATK</span>
+                                    <span class="stat-value" id="previewAttack">8</span>
+                                </div>
+                                <div class="stat defense">
+                                    <span class="stat-label">DEF</span>
+                                    <span class="stat-value" id="previewDefense">6</span>
+                                </div>
+                            </div>
+                            
+                            <div class="card-footer">
+                                <span class="rarity-badge" id="previewRarity">★★★ LEGENDARY</span>
+                                <span class="card-id" id="previewId">#001</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </main>
+
+        <!-- Print Queue Section -->
+        <section class="print-queue-section no-print">
+            <h2>Print Queue <span id="cardCount">(0 cards)</span></h2>
+            <div class="print-actions">
+                <button type="button" id="printBtn" class="btn btn-success" disabled>Print All Cards</button>
+                <button type="button" id="clearQueueBtn" class="btn btn-danger" disabled>Clear Queue</button>
+            </div>
+            <div class="queue-preview" id="queuePreview">
+                <p class="empty-queue">No cards in print queue. Add cards using the editor above.</p>
+            </div>
+        </section>
+
+        <!-- Print Area (Hidden until print) -->
+        <div class="print-area" id="printArea">
+            <!-- Cards will be added here for printing -->
+        </div>
+    </div>
+
+    <script src="trading-card.js"></script>
+</body>
+</html>

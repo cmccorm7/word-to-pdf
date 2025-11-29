@@ -1,0 +1,594 @@
+/* Trading Card Creator Styles */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
+    min-height: 100vh;
+    padding: 20px;
+    color: #ffffff;
+}
+
+.app-container {
+    max-width: 1400px;
+    margin: 0 auto;
+}
+
+.app-header {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.app-header h1 {
+    font-size: 2.5rem;
+    margin-bottom: 10px;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+.subtitle {
+    font-size: 1.1rem;
+    color: #a0a0a0;
+}
+
+/* Main Content Layout */
+.main-content {
+    display: grid;
+    grid-template-columns: 1fr 320px;
+    gap: 30px;
+    margin-bottom: 40px;
+}
+
+/* Editor Section */
+.editor-section {
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 15px;
+    padding: 25px;
+    backdrop-filter: blur(10px);
+}
+
+.editor-section h2,
+.preview-section h2,
+.print-queue-section h2 {
+    font-size: 1.4rem;
+    margin-bottom: 20px;
+    color: #ffffff;
+    border-bottom: 2px solid rgba(255, 255, 255, 0.2);
+    padding-bottom: 10px;
+}
+
+/* Form Styles */
+.card-form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.form-row {
+    display: flex;
+    gap: 15px;
+}
+
+.form-group {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+.form-group.small {
+    flex: 0 0 100px;
+}
+
+.form-group label {
+    font-size: 0.85rem;
+    color: #a0a0a0;
+    margin-bottom: 5px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.form-group input,
+.form-group select,
+.form-group textarea {
+    padding: 10px 12px;
+    border: 2px solid rgba(255, 255, 255, 0.2);
+    border-radius: 8px;
+    background: rgba(0, 0, 0, 0.3);
+    color: #ffffff;
+    font-size: 1rem;
+    transition: border-color 0.3s ease;
+}
+
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus {
+    outline: none;
+    border-color: #4ecdc4;
+}
+
+.form-group textarea {
+    resize: vertical;
+    min-height: 60px;
+}
+
+.form-group select {
+    cursor: pointer;
+}
+
+.form-group select option {
+    background: #1a1a2e;
+    color: #ffffff;
+}
+
+.form-actions {
+    display: flex;
+    gap: 10px;
+    margin-top: 10px;
+}
+
+/* Buttons */
+.btn {
+    padding: 12px 24px;
+    border: none;
+    border-radius: 8px;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.btn:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+.btn-primary {
+    background: linear-gradient(145deg, #4ecdc4, #44a08d);
+    color: #ffffff;
+}
+
+.btn-primary:hover:not(:disabled) {
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(78, 205, 196, 0.4);
+}
+
+.btn-secondary {
+    background: rgba(255, 255, 255, 0.2);
+    color: #ffffff;
+}
+
+.btn-secondary:hover:not(:disabled) {
+    background: rgba(255, 255, 255, 0.3);
+}
+
+.btn-success {
+    background: linear-gradient(145deg, #28a745, #218838);
+    color: #ffffff;
+}
+
+.btn-success:hover:not(:disabled) {
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(40, 167, 69, 0.4);
+}
+
+.btn-danger {
+    background: linear-gradient(145deg, #dc3545, #c82333);
+    color: #ffffff;
+}
+
+.btn-danger:hover:not(:disabled) {
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(220, 53, 69, 0.4);
+}
+
+/* Preview Section */
+.preview-section {
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 15px;
+    padding: 25px;
+    backdrop-filter: blur(10px);
+}
+
+.preview-container {
+    display: flex;
+    justify-content: center;
+}
+
+/* Print Queue Section */
+.print-queue-section {
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 15px;
+    padding: 25px;
+    backdrop-filter: blur(10px);
+}
+
+.print-queue-section h2 span {
+    font-size: 1rem;
+    color: #a0a0a0;
+    font-weight: normal;
+}
+
+.print-actions {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 20px;
+}
+
+.queue-preview {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
+    min-height: 100px;
+}
+
+.queue-preview .trading-card {
+    transform: scale(0.7);
+    transform-origin: top left;
+    margin-right: -84px;
+    margin-bottom: -120px;
+}
+
+.empty-queue {
+    color: #a0a0a0;
+    font-style: italic;
+    width: 100%;
+    text-align: center;
+    padding: 40px;
+}
+
+.queue-card-wrapper {
+    position: relative;
+}
+
+.remove-card-btn {
+    position: absolute;
+    top: 5px;
+    right: 5px;
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    background: #dc3545;
+    color: white;
+    border: none;
+    cursor: pointer;
+    font-size: 14px;
+    line-height: 1;
+    z-index: 10;
+}
+
+.remove-card-btn:hover {
+    background: #c82333;
+}
+
+/* Print Area */
+.print-area {
+    display: none;
+}
+
+/* Base Trading Card */
+.trading-card {
+    width: 280px;
+    height: 400px;
+    perspective: 1000px;
+    cursor: pointer;
+    transition: transform 0.3s ease;
+}
+
+.trading-card:hover {
+    transform: translateY(-10px) scale(1.02);
+}
+
+.card-border {
+    width: 100%;
+    height: 100%;
+    border-radius: 15px;
+    padding: 12px;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    overflow: hidden;
+    box-shadow: 
+        0 10px 30px rgba(0, 0, 0, 0.5),
+        0 0 20px rgba(255, 255, 255, 0.1) inset;
+}
+
+/* Rarity Styles */
+.trading-card.legendary .card-border {
+    background: linear-gradient(145deg, #ffd700 0%, #ff8c00 30%, #ffd700 50%, #ff6347 70%, #ffd700 100%);
+    border: 3px solid #ffd700;
+}
+
+.trading-card.rare .card-border {
+    background: linear-gradient(145deg, #4169e1 0%, #1e90ff 30%, #4169e1 50%, #6495ed 70%, #4169e1 100%);
+    border: 3px solid #4169e1;
+}
+
+.trading-card.uncommon .card-border {
+    background: linear-gradient(145deg, #2e8b57 0%, #3cb371 30%, #2e8b57 50%, #20b2aa 70%, #2e8b57 100%);
+    border: 3px solid #2e8b57;
+}
+
+.trading-card.common .card-border {
+    background: linear-gradient(145deg, #708090 0%, #a9a9a9 30%, #708090 50%, #778899 70%, #708090 100%);
+    border: 3px solid #708090;
+}
+
+/* Card Header */
+.card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: rgba(0, 0, 0, 0.7);
+    border-radius: 8px;
+    padding: 8px 12px;
+    margin-bottom: 8px;
+}
+
+.card-name {
+    font-size: 1.1rem;
+    font-weight: bold;
+    color: #ffffff;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.8);
+}
+
+.card-cost {
+    width: 28px;
+    height: 28px;
+    background: linear-gradient(145deg, #ff6b6b, #ee5a5a);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    font-size: 1rem;
+    color: #ffffff;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+}
+
+/* Card Image Area */
+.card-image {
+    flex: 1;
+    background: rgba(0, 0, 0, 0.5);
+    border-radius: 8px;
+    margin-bottom: 8px;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 120px;
+}
+
+.image-placeholder {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(180deg, rgba(255,255,255,0.1) 0%, rgba(0,0,0,0.2) 100%);
+}
+
+.placeholder-icon {
+    font-size: 4rem;
+    filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.5));
+}
+
+.card-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* Card Type */
+.card-type {
+    margin-bottom: 8px;
+}
+
+.type-badge {
+    display: inline-block;
+    background: rgba(0, 0, 0, 0.6);
+    padding: 4px 10px;
+    border-radius: 12px;
+    font-size: 0.75rem;
+    color: #d0d0d0;
+    font-style: italic;
+}
+
+/* Card Description */
+.card-description {
+    background: rgba(0, 0, 0, 0.7);
+    border-radius: 8px;
+    padding: 10px;
+    margin-bottom: 8px;
+    font-size: 0.8rem;
+    line-height: 1.4;
+    color: #e0e0e0;
+    min-height: 60px;
+}
+
+.card-description strong {
+    color: #ffd700;
+}
+
+.flavor-text {
+    font-style: italic;
+    color: #a0a0a0;
+    margin-top: 5px;
+    font-size: 0.75rem;
+}
+
+/* Card Stats */
+.card-stats {
+    display: flex;
+    justify-content: space-around;
+    margin-bottom: 8px;
+}
+
+.stat {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background: rgba(0, 0, 0, 0.6);
+    padding: 6px 16px;
+    border-radius: 8px;
+}
+
+.stat-label {
+    font-size: 0.65rem;
+    color: #a0a0a0;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.stat-value {
+    font-size: 1.3rem;
+    font-weight: bold;
+    color: #ffffff;
+}
+
+.stat.attack .stat-value {
+    color: #ff6b6b;
+}
+
+.stat.defense .stat-value {
+    color: #4ecdc4;
+}
+
+/* Card Footer */
+.card-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-top: 4px;
+}
+
+.rarity-badge {
+    font-size: 0.7rem;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    padding: 3px 8px;
+    border-radius: 4px;
+    background: rgba(0, 0, 0, 0.6);
+}
+
+.legendary .rarity-badge {
+    color: #ffd700;
+    text-shadow: 0 0 10px #ffd700;
+}
+
+.rare .rarity-badge {
+    color: #4169e1;
+    text-shadow: 0 0 10px #4169e1;
+}
+
+.uncommon .rarity-badge {
+    color: #2e8b57;
+}
+
+.common .rarity-badge {
+    color: #a0a0a0;
+}
+
+.card-id {
+    font-size: 0.7rem;
+    color: rgba(255, 255, 255, 0.5);
+}
+
+/* Holographic Effect for Legendary Cards */
+.trading-card.legendary .card-border::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(
+        90deg,
+        transparent,
+        rgba(255, 255, 255, 0.3),
+        transparent
+    );
+    animation: shimmer 3s infinite;
+    pointer-events: none;
+}
+
+@keyframes shimmer {
+    0% {
+        left: -100%;
+    }
+    100% {
+        left: 100%;
+    }
+}
+
+/* Responsive Design */
+@media (max-width: 900px) {
+    .main-content {
+        grid-template-columns: 1fr;
+    }
+    
+    .preview-section {
+        order: -1;
+    }
+}
+
+@media (max-width: 480px) {
+    .app-header h1 {
+        font-size: 1.8rem;
+    }
+    
+    .form-row {
+        flex-direction: column;
+    }
+    
+    .form-group.small {
+        flex: 1;
+    }
+    
+    .trading-card {
+        width: 260px;
+        height: 380px;
+    }
+}
+
+/* Print Styles */
+@media print {
+    body {
+        background: white;
+        padding: 0;
+        margin: 0;
+    }
+    
+    .no-print {
+        display: none !important;
+    }
+    
+    .print-area {
+        display: flex !important;
+        flex-wrap: wrap;
+        gap: 20px;
+        padding: 20px;
+        justify-content: flex-start;
+    }
+    
+    .print-area .trading-card {
+        break-inside: avoid;
+        page-break-inside: avoid;
+        margin: 10px;
+    }
+    
+    .print-area .trading-card:hover {
+        transform: none;
+    }
+    
+    .trading-card.legendary .card-border::before {
+        animation: none;
+        display: none;
+    }
+}

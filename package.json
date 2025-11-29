@@ -1,7 +1,7 @@
 {
-  "name": "word-to-pdf-converter",
+  "name": "trading-card-creator",
   "version": "1.0.0",
-  "description": "A simple Node.js web app to convert Word (.docx) files to PDF.",
+  "description": "A web app to create, customize, and print trading cards.",
   "main": "server.js",
   "scripts": {
     "start": "node server.js"

@@ -74,7 +74,17 @@ document.addEventListener('DOMContentLoaded', function() {
         const imageValue = inputs.image.value.trim();
         if (imageValue.startsWith('http://') || imageValue.startsWith('https://')) {
             // It's a URL, show as image
-            preview.image.innerHTML = `<img src="${escapeHtml(imageValue)}" alt="Card Image" onerror="this.parentElement.innerHTML='<span class=\\'placeholder-icon\\'>❌</span>'">`;
+            const img = document.createElement('img');
+            img.src = imageValue;
+            img.alt = 'Card Image';
+            img.onerror = function() {
+                const errorSpan = document.createElement('span');
+                errorSpan.className = 'placeholder-icon';
+                errorSpan.textContent = '❌';
+                this.parentElement.replaceChild(errorSpan, this);
+            };
+            preview.image.innerHTML = '';
+            preview.image.appendChild(img);
         } else {
             // It's an emoji or text, show as placeholder
             preview.image.innerHTML = `<span class="placeholder-icon">${escapeHtml(imageValue) || '🎴'}</span>`;
@@ -116,7 +126,7 @@ document.addEventListener('DOMContentLoaded', function() {
         }
         
         const removeBtn = includeRemoveBtn ? 
-            `<button class="remove-card-btn" onclick="removeCard(this)" title="Remove card">×</button>` : '';
+            `<button class="remove-card-btn" data-action="remove" title="Remove card">×</button>` : '';
         
         return `
             <div class="queue-card-wrapper">
@@ -193,8 +203,8 @@ document.addEventListener('DOMContentLoaded', function() {
         printArea.innerHTML = cardQueue.map(card => createCardHtml(card, false)).join('');
     }
     
-    // Remove card from queue
-    window.removeCard = function(btn) {
+    // Remove card from queue using event delegation
+    function removeCard(btn) {
         const wrapper = btn.closest('.queue-card-wrapper');
         const index = Array.from(queuePreview.children).indexOf(wrapper);
         if (index > -1) {
@@ -202,7 +212,14 @@ document.addEventListener('DOMContentLoaded', function() {
             updateQueueDisplay();
             updateButtonStates();
         }
-    };
+    }
+    
+    // Event delegation for dynamically created remove buttons
+    queuePreview.addEventListener('click', function(e) {
+        if (e.target.matches('[data-action="remove"]')) {
+            removeCard(e.target);
+        }
+    });
     
     // Clear form
     function clearForm() {

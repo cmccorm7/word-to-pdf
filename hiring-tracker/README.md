@@ -2,6 +2,14 @@
 
 A simple web application to track candidates through your hiring pipeline.
 
+## 🚀 One-Click Deploy
+
+Deploy to the cloud with no terminal required:
+
+[![Deploy to Render](https://render.com/images/deploy-to-render-button.svg)](https://render.com/deploy?repo=https://github.com/cmccorm7/word-to-pdf)
+
+> After clicking, Render will set up the app and give you a public URL you can access from any device.
+
 ## Features
 
 - **Add/Edit/Delete candidates** with full details (name, email, phone, position, notes)
@@ -10,22 +18,24 @@ A simple web application to track candidates through your hiring pipeline.
 - **Dashboard stats** showing pipeline overview at a glance
 - **Persistent storage** using SQLite (no external database needed)
 
-## Getting Started
+## Deployment Options
 
-### Prerequisites
+### Option 1: Render (Recommended — no terminal needed)
+1. Click the **Deploy to Render** button above
+2. Sign in with your GitHub account
+3. Click "Apply" — Render will build and deploy automatically
+4. You'll get a public URL like `https://hiring-tracker-xxxx.onrender.com`
 
-- Node.js 18+ installed
+### Option 2: Docker
+```bash
+docker build -t hiring-tracker .
+docker run -p 3001:3001 -v hiring-data:/data hiring-tracker
+```
 
-### Installation
-
+### Option 3: Local
 ```bash
 cd hiring-tracker
 npm install
-```
-
-### Running
-
-```bash
 npm start
 ```
 

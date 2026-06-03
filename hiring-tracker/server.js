@@ -16,8 +16,11 @@ const apiLimiter = rateLimit({
 });
 app.use('/api/', apiLimiter);
 
-// Initialize database
-const db = new Database(path.join(__dirname, 'hiring.db'));
+// Initialize database (use /data for persistent disk on Render, local dir otherwise)
+const dbPath = process.env.NODE_ENV === 'production' && require('fs').existsSync('/data')
+  ? '/data/hiring.db'
+  : path.join(__dirname, 'hiring.db');
+const db = new Database(dbPath);
 db.pragma('journal_mode = WAL');
 
 db.exec(`

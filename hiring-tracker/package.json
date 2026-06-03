@@ -1,0 +1,16 @@
+{
+  "name": "hiring-tracker",
+  "version": "1.0.0",
+  "description": "A web app to track hiring candidates and their application status",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "node server.js"
+  },
+  "dependencies": {
+    "better-sqlite3": "^11.0.0",
+    "express": "^4.18.2",
+    "express-rate-limit": "^7.1.0",
+    "express-rate-limit": "^8.5.2"
+  }
+}
